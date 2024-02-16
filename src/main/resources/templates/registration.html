@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регестрация</title>
+    <link id="favicon" rel="icon" type="image/x-icon" href="images/icon.svg">
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ebedf0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .registration-form {
+            width: auto;
+            background-color: #FFFFFF; /* Изменено на светлый цвет */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .registration-form img{
+            margin-bottom: 20px;
+        }
+
+        .registration-form input[type="email"],
+        .registration-form input[type="tel"],
+        .registration-form input[type="date"],
+        .registration-form input[type="password"],
+        .registration-form input[type="password"]{
+            background-color: #FFFFFF; 
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px;
+        }
+
+        .registration-form a {
+            width: 100%;
+            margin-bottom: 7px;
+        }
+
+        .registration-form button {
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block; /* Добавлено это свойство */
+            pointer-events: none; /* Добавлено это свойство */
+        }
+
+        a button {
+            pointer-events: auto; /* Добавлено это свойство */
+        }
+
+
+        .registration-form a[href="catalog.html"] button {
+            width: 81px;
+            height: 23px;
+            background: linear-gradient(122.75deg, #A9C5D2 0%, #6A35EE 0%, #A9C5D2 0%, #A9C5D2 0.01%, #69BEE5 17.52%, #3EC2FF 60.97%, #795CEB 114.65%);
+            border-radius: 68px;
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 10px;
+            line-height: 22px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center; /* Добавлено это свойство */
+            align-items: center; /* Добавлено это свойство */
+        }
+
+        @media (prefers-color-scheme: dark){
+            body{
+                background-color: #303030;
+            }
+            .registration-form{
+                background-color: #2a2929;
+            }
+
+            .registration-form input[type="email"],
+            .registration-form input[type="tel"],
+            .registration-form input[type="date"],
+            .registration-form input[type="password"],
+            .registration-form input[type="password"]{
+                background-color: #2a2929;
+                color: #ffffff;
+            }
+            .registration-form button{
+                background-color: #2a2929;
+                color: #ffffff;            
+            }
+        }
+    </style>
+
+    <script>
+         window.addEventListener('load', function() {
+            var logo = document.querySelector('.registration-form img');
+            function setLogoSource() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    // Пользователь выбрал темную тему
+                    document.getElementById('favicon').href = 'images/svg_1.svg';
+                    logo.src = 'images/6.svg'; // Путь к логотипу для темной темы
+                } else {
+                    logo.src = 'images/3.svg'; // Путь к логотипу для светлой темы
+                }
+            }
+            setLogoSource();
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setLogoSource);
+        });
+      </script>
+
+</head>
+<body>
+    <form action="/registration" method="post">
+        <img src="images/3.svg" alt="Конец фотокарточке" width="250">
+        <input type="email" placeholder="e-mail" name="username" required>
+        <input type="tel" placeholder="Телефон" name="phoneNumber" required>
+        <input type="date" placeholder="Дата рождения" name="birthDate" required>
+        <input type="password" placeholder="Пароль" name="password" required>
+        <input type="password1" placeholder="Подтверди пароль" required>
+        <input type="submit" value="Войти"/>
+    </form>
+</body>
+</html>
