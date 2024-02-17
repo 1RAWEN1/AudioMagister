@@ -4,6 +4,7 @@ import com.app.audiomagister.domain.User;
 import com.app.audiomagister.repos.UserRepo;
 import com.app.audiomagister.role.Role;
 import com.app.audiomagister.service.SimpleEmailService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
+
+    private static final Logger logger = Logger.getLogger(RegistrationController.class);
+
     @Autowired
     private UserRepo userRepo;
 
@@ -58,7 +62,7 @@ public class RegistrationController {
     SimpleEmailService emailService;
 
     @PostMapping("/change")
-    public String changlePassword(@RequestParam String email){
+    public String changePassword(@RequestParam String email){
         User userFromDb = userRepo.findByUsername(email);
         if(userFromDb != null){
             emailService.sendPasswordEmail(userFromDb);
